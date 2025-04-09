@@ -44,7 +44,7 @@ jobs:
 
     strategy:
       matrix:
-        matlab_version: R2024b
+        matlab_version: [R2024b]
         #matlab_version: [R2024b, R2025a]
 
     name: Test in ${{ matrix.matlab_version }} on Windows
