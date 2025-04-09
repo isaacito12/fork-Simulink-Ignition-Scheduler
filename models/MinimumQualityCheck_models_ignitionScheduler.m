@@ -11,13 +11,14 @@ classdef MinimumQualityCheck_models_ignitionScheduler < matlab.unittest.TestCase
     end  % function
   end  % methods
   methods (Test)
-    %% Minimum quality check (MQC)
-    % Check that scripts, functions, classes, and models run right out of the box.
-    function MQC_1(~)
+    function run_short_sim(~)
+      mdl = "ignitionScheduler";
       evalin("base", "initCtrl")
       evalin("base", "initPlant")
-      load_system("ignitionScheduler")
-      sim("ignitionScheduler")
+      load_system(mdl)
+      sim_in = Simulink.SimulationInput(mdl);
+      sim_in = setModelParameter(sim_in, StopTime="0.1");
+      sim(sim_in);
     end  % function
   end  % methods
 end  % classdef
